@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="start" @click="start">
+        <input type="button" value="stop" @click="stop">
+        <h3>{{ msg }}</h3>
+    </div>
+    <script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'李雨晓李雨晓李雨晓李雨晓',
+            intervalId:null
+        },
+        methods:{
+            start() {
+                if(this.intervalId !== null) return
+                this.intervalId = setInterval(()=>{
+                    const header = this.msg.substring(0,1)
+                    const body = this.msg.substring(1)
+                    this.msg = body +header
+                },300)
+            },
+            stop() {
+                clearInterval(this.intervalId)
+                this,intervalId = null
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html>
